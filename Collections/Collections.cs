@@ -81,6 +81,59 @@ namespace CollectionsMethods
             return true;
         }
 
+        /// <summary>
+        /// Returns unique words that are found in text. Words written in different letter-cases 
+        /// are considered equal.
+        /// </summary>
+        /// <param name="input">Given text.</param>
+        /// <returns>Unique words.</returns>
+        public static IEnumerable<string> GetUniqueWords(string input)
+        {
+            CheckOnNull(input);
+            IEnumerable<string> GetWords(string text)
+            {
+                string[] words = input.ToLower().Split(GetDelimiters(), StringSplitOptions.RemoveEmptyEntries);
+                var setOfWords = new HashSet<string>();
+                foreach (var word in words)
+                {
+                    if (setOfWords.Add(word))
+                    {
+                        yield return word;
+                    }
+
+                    setOfWords.Add(word);
+                }
+            }
+
+            return GetWords(input);
+        }
+
+        /// <summary>
+        /// Returns unique words that are found in text. Words written in different letter-cases 
+        /// are considered different.
+        /// </summary>
+        /// <param name="input">Given text.</param>
+        /// <returns>Unique words with their frequency in the text.</returns>
+        public static IEnumerable<KeyValuePair<string, int>> GetUniqueWordsWithFrequency(string input)
+        {
+            CheckOnNull(input);
+            string[] words = input.Split(GetDelimiters(), StringSplitOptions.RemoveEmptyEntries);
+            var wordsStatistics = new Dictionary<string, int>();
+            foreach (var word in words)
+            {
+                if (wordsStatistics.ContainsKey(word))
+                {
+                    wordsStatistics[word]++;
+                }
+                else
+                {
+                    wordsStatistics.Add(word, 1);
+                }
+            }
+
+            return wordsStatistics;
+        }
+
         private static bool Contains(this IEnumerable<char> openingParenthesis, char symbol)
         {
             foreach (var bracket in openingParenthesis)
@@ -89,21 +142,21 @@ namespace CollectionsMethods
                 {
                     return true;
                 }
-
             }
+
             return false;
         }
+   
+        private static char[] GetDelimiters() => new char[] { '.', ',', '!', '?', '-',  ':',  ':',  ' '};
 
-        private static Dictionary<char, char> GetParenthesisDictionary() {
-            return 
+        private static Dictionary<char, char> GetParenthesisDictionary() => 
             new Dictionary<char, char>
             {
                 [')'] = '(',
                 [']'] = '[',
                 ['}'] = '{',
             };
-        }
-
+        
         private static void CheckIfPositiveNumber(int number)
         {
             if (number <= 0)
