@@ -134,6 +134,19 @@ namespace CollectionsMethods
             return wordsStatistics;
         }
 
+        public static T GetRemainingItemInCircle<T>(IEnumerable<T> initialItems)
+        {
+            CheckOnNull(initialItems);
+            var list = new LinkedList<T>(initialItems);
+            var current = list.First;
+            while (list.Count != 1)
+            {
+                list.Remove(current.Next ?? list.First);
+                current = current.Next ?? list.First;
+            }
+            return current.Value;
+        }
+
         private static bool Contains(this IEnumerable<char> openingParenthesis, char symbol)
         {
             foreach (var bracket in openingParenthesis)

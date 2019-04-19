@@ -82,6 +82,34 @@ namespace Collections.Tests
         {
             var wordsStats = CollectionsMethods.Collections.GetUniqueWordsWithFrequency(text);
             CollectionAssert.AreEqual(expected, wordsStats);
-        }      
+        }
+
+        [Test]
+        public void GetRemainingItemInCircle_NullPassed_ThrowArgumentNullException() =>
+          Assert.Throws<ArgumentNullException>(() => CollectionsMethods.Collections.GetRemainingItemInCircle<int>(null));
+
+        [TestCase(new int[] { 1, 2, 3, 4, 5 }, ExpectedResult = 3)]
+        [TestCase(new int[] { 1, 2 }, ExpectedResult = 1)]
+        [TestCase(new int[] { 1 }, ExpectedResult = 1)]
+        [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, ExpectedResult = 5)]
+        [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 }, ExpectedResult = 3)]
+        public int GetRemainingItemInCircle_ValuesPassed_ReturnItem(int[] items)
+        {
+            return CollectionsMethods.Collections.GetRemainingItemInCircle(items);
+        }
+
+        [Test]
+        public void GetRemainingItemInCircle_PersonPassed_ReturnRemainingPerson()
+        {
+            var persons = new List<Person>() { new Person { Name = "Сережа" }, new Person { Name = "Дима" },
+                new Person { Name = "Валерий" }, new Person { Name = "Катя" }, new Person { Name = "Даниил" } };
+            var remainingPerson = CollectionsMethods.Collections.GetRemainingItemInCircle(persons);
+            Assert.AreEqual(remainingPerson.Name, "Валерий");
+        }
+
+        public class Person
+        {
+            public string Name { get; set; }
+        }
     }
 }
