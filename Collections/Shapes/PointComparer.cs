@@ -8,14 +8,17 @@ namespace Collections.Shapes
 {
     internal class PointComparer : IComparer<Point>
     {
-        public int Compare(Point a, Point b)
+        public int Compare(Point x, Point y)
         {
-            if ((a.X == b.X) && (a.Y == b.Y))
-                return 0;
-            if ((a.X < b.X) || ((a.X == b.X) && (a.Y < b.Y)))
-                return -1;
+            if (x.Y != y.Y)
+            {
+                return x.Y - y.Y;
+            }
+            else
+            {
+                return x.X - y.X;
+            }
 
-            return 1;
         }
     }
 }
