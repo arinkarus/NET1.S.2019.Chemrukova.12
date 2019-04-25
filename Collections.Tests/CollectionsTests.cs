@@ -123,7 +123,7 @@ namespace Collections.Tests
                                                     new int[] {0, 1, 0, 1, 0 },
                                                     new int[] {0, 1, 0, 1, 0 },
                                                     new int[] {0, 1, 0, 1, 0 },
-                                                    new int[] {0, 0, 0, 0, 0 },
+                                                    new int[] {0, 0, 0, 0, 0 } },
                                                     arg2: new List<Shape>
                                                     {
                                                         new Shape(new List<Point>{ new Point(1, 1), new Point(1, 2), new Point(1, 3)}),
