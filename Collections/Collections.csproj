@@ -43,6 +43,11 @@
   <ItemGroup>
     <Compile Include="Collections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shapes\PointComparer.cs" />
+    <Compile Include="Shapes\ShapesFinding.cs" />
+    <Compile Include="Shapes\Point.cs" />
+    <Compile Include="Shapes\Shape.cs" />
+    <Compile Include="Shapes\ShapeComparer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,7 +23,7 @@ namespace CollectionsMethods
             {
                 int sieveBound = (upperLimit - 1) / 2;
                 int upperSqrt = ((int)Math.Sqrt(upperLimit) - 1) / 2;
-                BitArray bits = new BitArray(sieveBound + 1, true);
+                var bits = new BitArray(sieveBound + 1, true);
                 yield return 2;
                 for (int i = 1; i <= upperSqrt; i++)
                 {
