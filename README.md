@@ -22,7 +22,7 @@ Chapter 7. Collections
 - (deadline - 19.04.2019, 24.00) На клетчатом листе бумаги закрашена часть клеток. Выделить все различные фигуры, которые образовались при этом. Фигурой считается набор закрашенных клеток, достижимых друг из друга при движении в четырёх направлениях. Две фигуры являются различными, если их нельзя совместить поворотом на угол, кратный 90 градусам, и параллельным переносом. 
 
 ## Реализация (Done)
-[Задания 1-5](https://github.com/arinkarus/NET1.S.2019.Chemrukova.12/blob/master/Collections/Collections.cs)
-[Тесты к заданиям 1-5](https://github.com/arinkarus/NET1.S.2019.Chemrukova.12/blob/master/Collections.Tests/ShapeTests.cs)
-[Задание 6](https://github.com/arinkarus/NET1.S.2019.Chemrukova.12/tree/master/Collections/Shapes)
-[тесты к заданию 6](https://github.com/arinkarus/NET1.S.2019.Chemrukova.12/blob/master/Collections.Tests/ShapeTests.cs)
+- [Задания 1-5](https://github.com/arinkarus/NET1.S.2019.Chemrukova.12/blob/master/Collections/Collections.cs)
+- [Тесты к заданиям 1-5](https://github.com/arinkarus/NET1.S.2019.Chemrukova.12/blob/master/Collections.Tests/ShapeTests.cs)
+- [Задание 6](https://github.com/arinkarus/NET1.S.2019.Chemrukova.12/tree/master/Collections/Shapes)
+- [тесты к заданию 6](https://github.com/arinkarus/NET1.S.2019.Chemrukova.12/blob/master/Collections.Tests/ShapeTests.cs)
