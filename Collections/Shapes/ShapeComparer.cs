@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace Collections.Shapes
 {
+    /// <summary>
+    /// Comparer for shapes.
+    /// </summary>
     internal class ShapeComparer : IEqualityComparer<Shape>
     {
+        /// <summary>
+        /// Compares first and second shapes.
+        /// </summary>
+        /// <param name="firstShape">First shape.</param>
+        /// <param name="secondShape">Second shape.</param>
+        /// <returns>True if shapes are equal. Else - false.</returns>
         public bool Equals(Shape firstShape, Shape secondShape)
         {
             if (firstShape == null || secondShape == null)
@@ -20,12 +29,17 @@ namespace Collections.Shapes
                 return true;
             }
 
-            return CheckForEquality(firstShape, secondShape);
+            return this.CheckForEquality(firstShape, secondShape);
         }
 
+        /// <summary>
+        /// Check if two shapes are equal because they are parallel.
+        /// </summary>
+        /// <param name="first">First shape.</param>
+        /// <param name="second">Second shape.</param>
+        /// <returns>True if shapes are equal. Else - false.</returns>
         private bool CheckIfParallel(Shape first, Shape second)
         {
-
             int diffX = first.Points[0].X - second.Points[0].X;
             int diffY = first.Points[0].Y - second.Points[0].Y;
 
@@ -37,10 +51,14 @@ namespace Collections.Shapes
                 {
                     return false;
                 }
-
             }
 
             return true;
+        }
+
+        public int GetHashCode(Shape obj)
+        {
+            return obj.Points.Count.GetHashCode();
         }
 
         private bool CheckForEquality(Shape first, Shape second)
@@ -50,19 +68,19 @@ namespace Collections.Shapes
                 return true;
             }
 
-            var rotatedShape = GetRotatedShape(second, 90);
+            var rotatedShape = this.GetRotatedShape(second, 90);
             if (this.CheckIfParallel(first, rotatedShape))
             {
                 return true;
             }
 
-            rotatedShape = GetRotatedShape(rotatedShape, 90);
+            rotatedShape = this.GetRotatedShape(rotatedShape, 90);
             if (this.CheckIfParallel(first, rotatedShape))
             {
                 return true;
             }
 
-            rotatedShape = GetRotatedShape(rotatedShape, 90);
+            rotatedShape = this.GetRotatedShape(rotatedShape, 90);
             if (this.CheckIfParallel(first, rotatedShape))
             {
                 return true;
@@ -71,17 +89,12 @@ namespace Collections.Shapes
             return false;
         }
 
-        public int GetHashCode(Shape obj)
-        {
-            return obj.Points.Count.GetHashCode();
-        }
-
         private Shape GetRotatedShape(Shape shape, double angle)
         {
             Point[] rotatedPoints = new Point[shape.Points.Count];
             for (int i = 0; i < rotatedPoints.Length; i++)
             {
-                rotatedPoints[i] = GetRotatedPoint(90, shape.Points[i]);
+                rotatedPoints[i] = this.GetRotatedPoint(90, shape.Points[i]);
             }
 
             return new Shape(rotatedPoints);
@@ -89,8 +102,8 @@ namespace Collections.Shapes
 
         private Point GetRotatedPoint(double angle, Point pt)
         {
-            int newX = (-pt.Y);
-            int newY = (pt.X);
+            int newX = -pt.Y;
+            int newY = pt.X;
             return new Point(newX, newY);
         }
     }

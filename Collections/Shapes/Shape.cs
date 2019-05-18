@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace Collections.Shapes
 {
-    public class Shape: IEquatable<Shape>
+    /// <summary>
+    /// Represents a shape that is found on the map.
+    /// </summary>
+    public class Shape : IEquatable<Shape>
     {
-        private List<Point> points { get; set; }
+        /// <summary>
+        ///  Points (cells) that are occupied by the shape.
+        /// </summary>
+        private List<Point> points;
 
+        /// <summary>
+        /// Gets points.
+        /// </summary>
         public List<Point> Points
         {
             get
@@ -17,12 +26,17 @@ namespace Collections.Shapes
                 var clone = new List<Point>(this.points);
                 return clone;
             }
+
             private set
             {
                 this.points = value ?? throw new ArgumentNullException($"Can't create shape without points!");
             }
         }
-
+    
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Shape" /> class.	
+        /// </summary>
+        /// <param name="points">Given points.</param>
         public Shape(IEnumerable<Point> points)
         {
             List<Point> sorted = new List<Point>(points);
@@ -36,7 +50,8 @@ namespace Collections.Shapes
             {
                 return false;
             }
-            return Equals(other);
+
+            return this.Equals(other);
         }
 
         public override int GetHashCode()

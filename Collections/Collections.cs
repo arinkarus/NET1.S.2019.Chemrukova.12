@@ -144,6 +144,7 @@ namespace CollectionsMethods
                 list.Remove(current.Next ?? list.First);
                 current = current.Next ?? list.First;
             }
+
             return current.Value;
         }
 

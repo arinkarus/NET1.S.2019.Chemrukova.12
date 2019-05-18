@@ -2,14 +2,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Collections
 {
+    /// <summary>
+    /// Finds shapes.
+    /// </summary>
     public static class ShapesFinding
     {
+        /// <summary>
+        /// Find shapes on the map.
+        /// </summary>
+        /// <param name="map">Given map.</param>
+        /// <returns>Get unique shapes on the map.</returns>
         public static IEnumerable<Shape> GetShapes(int[][] map)
         {
             ValidateMap(map);
@@ -32,9 +37,14 @@ namespace Collections
                     }
                 }
             }
+
             return uniqueShapes;
         }
 
+        /// <summary>
+        /// Validates if passed map is correct.
+        /// </summary>
+        /// <param name="map">Given map.</param>
         private static void ValidateMap(int[][] map)
         {
             if (map == null)
